@@ -1,7 +1,16 @@
+/**
+ * Работа с JDBC
+ *
+ * @author Artur Gilyazov
+ */
+
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/**
+ * Класс для постоянного создания и заполнения базы, дабы исключить ошибки, которые могут испортить базу
+ */
 public class JDBC {
     private JDBC() {
 
@@ -53,6 +62,5 @@ public class JDBC {
                     + "\n");
 
         }
-
     }
 }
