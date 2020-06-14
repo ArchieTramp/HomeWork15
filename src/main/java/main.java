@@ -3,8 +3,12 @@
  *
  * @author Artur Gilyazov
  */
+
 import java.sql.*;
-/** main класс в котром все и происходит, не стал разбрасывать по разным */
+
+/**
+ * main класс в котром все и происходит, не стал разбрасывать по разным
+ */
 public class main {
     public static void main(String[] args) throws SQLException {
         try (Connection connection = DriverManager.getConnection(
@@ -63,7 +67,7 @@ public class main {
                             + "('Evolution " + i + "', " + i * 250 + ", 'True Games');");
                 }
                 connection.rollback(savepoint);
-            /** Ролбэк если будет ошибка */
+                /** Ролбэк если будет ошибка */
             } catch (SQLException e) {
                 connection.rollback();
                 e.printStackTrace();
