@@ -4,6 +4,9 @@
  * @author Artur Gilyazov
  */
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -15,8 +18,9 @@ public class JDBC {
     private JDBC() {
 
     }
+    private static final Logger logger = LoggerFactory.getLogger(JDBC.class.getName());
 
-    public static void newJDBC(Connection connection) throws SQLException {
+    public static void newJDBC(Connection connection) {
         try (Statement statement = connection.createStatement()) {
             statement.execute("-- Database: postgres\n "
                     + "DROP TABLE IF EXISTS boardgame;"
@@ -40,13 +44,13 @@ public class JDBC {
                     + "id bigserial primary key,\n"
                     + "name varchar(100) NOT NULL, \n"
                     + "price integer NOT NULL, \n"
-                    + "boardgame varchar(100) NOT NULL);"
+                    + "howMany integer NOT NULL);"
                     + "\n"
-                    + "INSERT INTO parts (name, price, boardgame)\n"
+                    + "INSERT INTO parts (name, price, howMany)\n"
                     + "VALUES\n"
-                    + "('Mipl', 100, 'Carsasson'),\n"
-                    + "('Dice d6', 50, 'allgames'),\n"
-                    + "('Dice d20', 200, 'D&D');"
+                    + "('Mipl', 100, 500),\n"
+                    + "('Dice d6', 50, 100),\n"
+                    + "('Dice d20', 200, 30);"
                     + "\n"
                     + "CREATE TABLE skilltoys (\n"
                     + "id bigserial primary key,\n"
@@ -61,6 +65,8 @@ public class JDBC {
                     + "('Pogostick', 1200, 16);\n"
                     + "\n");
 
+        } catch (SQLException throwables) {
+            logger.error("SQLException");
         }
     }
 }
