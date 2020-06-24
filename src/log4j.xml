@@ -6,24 +6,17 @@
         <Pattern>%d %p %c{1.} [%t] %m %ex%n</Pattern>
       </PatternLayout>
     </File>
-    <File name="file2" fileName="logs/log4j/log2.log">
-      <MarkerFilter marker="consoleonly" onMatch="DENY" onMismatch="ACCEPT"/>
-      <PatternLayout>
-        <Pattern>%d %p %c{1.} [%t] %m %ex%n</Pattern>
-      </PatternLayout>
-    </File>
     <Console name="stdout" target="SYSTEM_OUT">
       <PatternLayout pattern="%m%n"/>
     </Console>
      </Appenders>
   <Loggers>
     <Root level="trace">
-      <AppenderRef ref="file" level="DEBUG"/>
+      <AppenderRef ref="file" level="INFO"/>
       <AppenderRef ref="stdout" level="INFO"/>
     </Root>
     <Logger name="MyLogger" level="info" additivity="true">
-      <AppenderRef ref="file2" level="INFO"/>
-      <AppenderRef ref="stdout" level="INFO"/>
+         <AppenderRef ref="stdout" level="INFO"/>
     </Logger>
   </Loggers>
 </Configuration>
