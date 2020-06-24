@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import org.apache.log4j.ConsoleAppender;
+
 
 
 public class FilterSorter {
@@ -16,7 +16,9 @@ public class FilterSorter {
             preparedStatement.setInt(1, 12);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                logger.info(resultSet.getString("name") + " " + resultSet.getInt("price") + " RUB " + "for " + resultSet.getString("forage") + " age");
+                logger.info(resultSet.getString("name") + " "
+                        + resultSet.getInt("price") + " RUB " + "for "
+                        + resultSet.getString("forage") + " age");
                    }
         } catch (SQLException throwables) {
 
